@@ -1,8 +1,9 @@
 {
-  "rewrites": [
+  "redirects": [
     {
       "source": "/",
-      "destination": "/en/"
+      "destination": "/en/",
+      "permanent": false
     }
   ]
 }
