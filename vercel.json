@@ -11,6 +11,18 @@
       ],
       "destination": "/en/:path*",
       "permanent": false
+    },
+    {
+      "source": "/en/:path*",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "zh.*"
+        }
+      ],
+      "destination": "/:path((?!en/).*)",
+      "permanent": false
     }
   ]
 }
