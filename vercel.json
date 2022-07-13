@@ -6,7 +6,7 @@
         {
           "type": "header",
           "key": "x-vercel-ip-country",
-          "value": "CN"
+          "value": "HK"
         }
       ],
       "destination": "/en/:path*"
