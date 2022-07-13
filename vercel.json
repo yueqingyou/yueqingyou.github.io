@@ -21,7 +21,7 @@
           "value": "zh.*"
         }
       ],
-      "destination": "/:path*)",
+      "destination": "/:path*",
       "permanent": false
     }
   ]
