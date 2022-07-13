@@ -1,1 +1,15 @@
-{"redirects":[{"source":"^/en/(.*)$","destination":"https://vccv.cc/$1","permanent":false}]}
+{
+  "rewrites": [
+    {
+      "source": "/:path((?!en/).*)",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-vercel-ip-country",
+          "value": "CN"
+        }
+      ],
+      "destination": "/en/:path*"
+    }
+  ]
+}
