@@ -173,20 +173,6 @@
 
   
   <url>
-    <loc>https://vccv.cc/tags/mac/</loc>
-    <lastmod>2022-07-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://vccv.cc/tags/aria2/</loc>
-    <lastmod>2022-07-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://vccv.cc/tags/codeblock/</loc>
     <lastmod>2022-07-13</lastmod>
     <changefreq>weekly</changefreq>
@@ -202,6 +188,20 @@
   
   <url>
     <loc>https://vccv.cc/tags/cactus/</loc>
+    <lastmod>2022-07-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://vccv.cc/tags/mac/</loc>
+    <lastmod>2022-07-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://vccv.cc/tags/aria2/</loc>
     <lastmod>2022-07-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -343,14 +343,14 @@
 
   
   <url>
-    <loc>https://vccv.cc/categories/tips/</loc>
+    <loc>https://vccv.cc/categories/theme/</loc>
     <lastmod>2022-07-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://vccv.cc/categories/theme/</loc>
+    <loc>https://vccv.cc/categories/tips/</loc>
     <lastmod>2022-07-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
