@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /article/test.html
+Disallow: /categories/test/
+Disallow: /tags/test/
+Disallow: /404.html
+
+Sitemap: https://vccv.cc/sitemap.xml
