@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://vccv.cc/article/fancybox-twikoo.html</loc>
+    
+    <lastmod>2022-07-13</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://vccv.cc/article/docker-easyconnect.html</loc>
     
     <lastmod>2022-07-10</lastmod>
@@ -173,6 +182,20 @@
 
   
   <url>
+    <loc>https://vccv.cc/tags/mac/</loc>
+    <lastmod>2022-07-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://vccv.cc/tags/aria2/</loc>
+    <lastmod>2022-07-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://vccv.cc/tags/codeblock/</loc>
     <lastmod>2022-07-13</lastmod>
     <changefreq>weekly</changefreq>
@@ -194,14 +217,7 @@
   </url>
   
   <url>
-    <loc>https://vccv.cc/tags/mac/</loc>
-    <lastmod>2022-07-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://vccv.cc/tags/aria2/</loc>
+    <loc>https://vccv.cc/tags/fancybox/</loc>
     <lastmod>2022-07-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -229,7 +245,7 @@
   </url>
   
   <url>
-    <loc>https://vccv.cc/tags/fancybox/</loc>
+    <loc>https://vccv.cc/tags/twikoo/</loc>
     <lastmod>2022-07-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -343,14 +359,14 @@
 
   
   <url>
-    <loc>https://vccv.cc/categories/theme/</loc>
+    <loc>https://vccv.cc/categories/tips/</loc>
     <lastmod>2022-07-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://vccv.cc/categories/tips/</loc>
+    <loc>https://vccv.cc/categories/theme/</loc>
     <lastmod>2022-07-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
