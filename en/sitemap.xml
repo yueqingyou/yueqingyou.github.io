@@ -241,7 +241,7 @@
   </url>
   
   <url>
-    <loc>https://vccv.cc/en/tags/passby/</loc>
+    <loc>https://vccv.cc/en/tags/yabai/</loc>
     <lastmod>2022-07-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -269,14 +269,7 @@
   </url>
   
   <url>
-    <loc>https://vccv.cc/en/tags/yabai/</loc>
-    <lastmod>2022-07-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://vccv.cc/en/tags/takagi-san/</loc>
+    <loc>https://vccv.cc/en/tags/passby/</loc>
     <lastmod>2022-07-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -291,6 +284,13 @@
   
   <url>
     <loc>https://vccv.cc/en/tags/linux/</loc>
+    <lastmod>2022-07-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://vccv.cc/en/tags/takagi-san/</loc>
     <lastmod>2022-07-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -348,13 +348,6 @@
   </url>
   
   <url>
-    <loc>https://vccv.cc/en/categories/Modify-Crack/</loc>
-    <lastmod>2022-07-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://vccv.cc/en/categories/Notes/</loc>
     <lastmod>2022-07-16</lastmod>
     <changefreq>weekly</changefreq>
@@ -362,7 +355,7 @@
   </url>
   
   <url>
-    <loc>https://vccv.cc/en/categories/Thinking/</loc>
+    <loc>https://vccv.cc/en/categories/Modify-Crack/</loc>
     <lastmod>2022-07-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -370,6 +363,13 @@
   
   <url>
     <loc>https://vccv.cc/en/categories/Linux-Skill/</loc>
+    <lastmod>2022-07-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://vccv.cc/en/categories/Thinking/</loc>
     <lastmod>2022-07-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
