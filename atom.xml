@@ -40,11 +40,11 @@
     <category term="主题美化" scheme="https://vccv.cc/categories/theme/"/>
     
     
-    <category term="美化" scheme="https://vccv.cc/tags/beautify/"/>
-    
     <category term="fancybox" scheme="https://vccv.cc/tags/fancybox/"/>
     
     <category term="twikoo" scheme="https://vccv.cc/tags/twikoo/"/>
+    
+    <category term="美化" scheme="https://vccv.cc/tags/beautify/"/>
     
   </entry>
   
@@ -126,7 +126,7 @@
     <published>2022-03-26T06:06:28.000Z</published>
     <updated>2022-06-22T10:38:41.450Z</updated>
     
-    <content type="html"><![CDATA[<script src="https://cdn.jsdelivr.net/npm/dplayer@1/dist/DPlayer.min.js"></script><div id="mmedia-USvAYXzjXZbUBgET"></div><script> var USvAYXzjXZbUBgET_options = JSON.parse('{\"video\":{\"url\":\"takagi-san/videos/takagi-san.mp4\"}}'); USvAYXzjXZbUBgET_options.container = document.getElementById("mmedia-USvAYXzjXZbUBgET"); const dp_USvAYXzjXZbUBgET = new DPlayer(USvAYXzjXZbUBgET_options); </script><h2 id="前"><a href="#前" class="headerlink" title="前"></a>前</h2><p>《<strong>擅长捉弄的高木同学</strong>》（日语：からかい上手の高木さん）动画TV第三季在今日（3.26）完结了，或许也没有第四季了。</p><p>特意在凌晨一点去追了，感慨良多。</p><p>之前得知剧场版将于6月在日本上映，国内B站或许会引进，期待一下。</p><p>另外，转载一个up主的剪辑视频，回顾了三季的剧情，做得很棒。</p><p>感谢<a href="https://www.bilibili.com/video/BV1eS4y127Eg">吕吕吕谷修</a>。</p><h2 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h2><p><a data-fancybox="gallery" data-src="takagi-san/B1834133-4AB1-45BC-A0DB-3DCC418ED357_1_105_c.jpeg" data-caption="b站评论"><img src="takagi-san/B1834133-4AB1-45BC-A0DB-3DCC418ED357_1_105_c.jpeg" alt="b站评论"></a></p>]]></content>
+    <content type="html"><![CDATA[<script src="https://cdn.jsdelivr.net/npm/dplayer@1/dist/DPlayer.min.js"></script><div id="mmedia-xFAPAdpWjZBFzjzh"></div><script> var xFAPAdpWjZBFzjzh_options = JSON.parse('{\"video\":{\"url\":\"takagi-san/videos/takagi-san.mp4\"}}'); xFAPAdpWjZBFzjzh_options.container = document.getElementById("mmedia-xFAPAdpWjZBFzjzh"); const dp_xFAPAdpWjZBFzjzh = new DPlayer(xFAPAdpWjZBFzjzh_options); </script><h2 id="前"><a href="#前" class="headerlink" title="前"></a>前</h2><p>《<strong>擅长捉弄的高木同学</strong>》（日语：からかい上手の高木さん）动画TV第三季在今日（3.26）完结了，或许也没有第四季了。</p><p>特意在凌晨一点去追了，感慨良多。</p><p>之前得知剧场版将于6月在日本上映，国内B站或许会引进，期待一下。</p><p>另外，转载一个up主的剪辑视频，回顾了三季的剧情，做得很棒。</p><p>感谢<a href="https://www.bilibili.com/video/BV1eS4y127Eg">吕吕吕谷修</a>。</p><h2 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h2><p><a data-fancybox="gallery" data-src="takagi-san/B1834133-4AB1-45BC-A0DB-3DCC418ED357_1_105_c.jpeg" data-caption="b站评论"><img src="takagi-san/B1834133-4AB1-45BC-A0DB-3DCC418ED357_1_105_c.jpeg" alt="b站评论"></a></p>]]></content>
     
     
     <summary type="html">高木同学TV版已然完结,特意在凌晨一点去追了，感慨良多。之前得知剧场版将于6月在日本上映，国内B站或许会引进，期待一下。另外，转载一个up主的剪辑视频，回顾了三季的剧情，做得很棒。</summary>
@@ -226,11 +226,11 @@
     <category term="主题美化" scheme="https://vccv.cc/categories/theme/"/>
     
     
+    <category term="fancybox" scheme="https://vccv.cc/tags/fancybox/"/>
+    
     <category term="美化" scheme="https://vccv.cc/tags/beautify/"/>
     
     <category term="cactus" scheme="https://vccv.cc/tags/cactus/"/>
-    
-    <category term="fancybox" scheme="https://vccv.cc/tags/fancybox/"/>
     
   </entry>
   
@@ -301,11 +301,11 @@
     <category term="主题美化" scheme="https://vccv.cc/categories/theme/"/>
     
     
-    <category term="代码块样式" scheme="https://vccv.cc/tags/codeblock/"/>
-    
     <category term="美化" scheme="https://vccv.cc/tags/beautify/"/>
     
     <category term="cactus" scheme="https://vccv.cc/tags/cactus/"/>
+    
+    <category term="代码块样式" scheme="https://vccv.cc/tags/codeblock/"/>
     
   </entry>
   
@@ -314,9 +314,9 @@
     <link href="https://vccv.cc/article/ios-jailbreak-genshin.html"/>
     <id>https://vccv.cc/article/ios-jailbreak-genshin.html</id>
     <published>2021-12-23T14:29:23.000Z</published>
-    <updated>2022-02-26T13:33:33.180Z</updated>
+    <updated>2022-07-16T07:03:26.766Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="事情起因"><a href="#事情起因" class="headerlink" title="事情起因"></a>事情起因</h2><p>iOS端原神终于也不当人了，在2021-12-22 14:00，iOS端原神开始检测越狱设备，提示“数据异常，请重新登录”。</p><p><a data-fancybox="gallery" data-src="ios-jailbreak-genshin/image.jpeg" data-caption="官方警告"><img src="ios-jailbreak-genshin/image.jpeg" alt="官方警告"></a></p><h2 id="经过"><a href="#经过" class="headerlink" title="经过"></a>经过</h2><p>我在GitHub上搜索关键词发现一国外老哥在六天前发布过一个越狱插件。</p><p>但是！！！</p><p>原作者误将原神在国内的包名写错：</p><p><a data-fancybox="gallery" data-src="ios-jailbreak-genshin/error.png" data-caption="错误代码"><img src="ios-jailbreak-genshin/error.png" alt="错误代码"></a></p><h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><p>原代码：</p><div class="highlight-wrap" data-rel="Code"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123; Filter = &#123; Bundles = ( &quot;com.miHoYo.GenshinImpact&quot;, &quot;com.miHoYo.Yanshen&quot; ); &#125;; &#125;</span><br></pre></td></tr></table></figure></div><p>更正为：</p><div class="highlight-wrap" data-rel="Code"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123; Filter = &#123; Bundles = ( &quot;com.miHoYo.GenshinImpact&quot;, &quot;com.miHoYo.Yuanshen&quot; ); &#125;; &#125;</span><br></pre></td></tr></table></figure></div><p>我将原作者打包的deb包解包修改后重新编译发布，做了一点微不足道的小事情。</p><h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2><p>经本人测试，原神国服已经能够正常运行，国际服待测。</p><blockquote><p>测试设备</p><p>机型：12mini</p><p>iOS版本：14.2.1</p><p>越狱软件：unc0ver</p></blockquote><h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p><a href="https://yuesir.lanzouo.com/iejurxwygaf">蓝奏云</a></p><h2 id="感谢🙏"><a href="#感谢🙏" class="headerlink" title="感谢🙏"></a>感谢🙏</h2><p><a href="https://github.com/iVoider/GenshinJailbreakBypass">Github作者iVoider</a></p><h2 id="更新1"><a href="#更新1" class="headerlink" title="更新1"></a>更新1</h2><p>BigBoss源上已有作者上传维护插件，名为 <strong>原神（国服）屏蔽越狱</strong> 。经测试可以正常使用，请直接前去下载安装。</p><h2 id="更新2"><a href="#更新2" class="headerlink" title="更新2"></a>更新2</h2><p>插件已经改名，叫做 <strong>原神防越狱检测</strong> 。</p>]]></content>
+    <content type="html"><![CDATA[<h2 id="更新3"><a href="#更新3" class="headerlink" title="更新3"></a>更新3</h2><p>经评论区老哥反馈，截止2022/07/16的iOS原神最新版本，文章下载链接里的屏蔽插件还是可以正常使用。</p><p>鉴于BigBoss源插件的不稳定更新，建议使用文章下载链接里面的第一版插件。</p><h2 id="事情起因"><a href="#事情起因" class="headerlink" title="事情起因"></a>事情起因</h2><p>iOS端原神终于也不当人了，在2021-12-22 14:00，iOS端原神开始检测越狱设备，提示“数据异常，请重新登录”。</p><p><a data-fancybox="gallery" data-src="ios-jailbreak-genshin/image.jpeg" data-caption="官方警告"><img src="ios-jailbreak-genshin/image.jpeg" alt="官方警告"></a></p><h2 id="经过"><a href="#经过" class="headerlink" title="经过"></a>经过</h2><p>我在GitHub上搜索关键词发现一国外老哥在六天前发布过一个越狱插件。</p><p>但是！！！</p><p>原作者误将原神在国内的包名写错：</p><p><a data-fancybox="gallery" data-src="ios-jailbreak-genshin/error.png" data-caption="错误代码"><img src="ios-jailbreak-genshin/error.png" alt="错误代码"></a></p><h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><p>原代码：</p><div class="highlight-wrap" data-rel="Code"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123; Filter = &#123; Bundles = ( &quot;com.miHoYo.GenshinImpact&quot;, &quot;com.miHoYo.Yanshen&quot; ); &#125;; &#125;</span><br></pre></td></tr></table></figure></div><p>更正为：</p><div class="highlight-wrap" data-rel="Code"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123; Filter = &#123; Bundles = ( &quot;com.miHoYo.GenshinImpact&quot;, &quot;com.miHoYo.Yuanshen&quot; ); &#125;; &#125;</span><br></pre></td></tr></table></figure></div><p>我将原作者打包的deb包解包修改后重新编译发布，做了一点微不足道的小事情。</p><h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2><p>经本人测试，原神国服已经能够正常运行，国际服待测。</p><blockquote><p>测试设备</p><p>机型：12mini</p><p>iOS版本：14.2.1</p><p>越狱软件：unc0ver</p></blockquote><h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p><a href="https://yuesir.lanzouo.com/iejurxwygaf">蓝奏云</a></p><h2 id="感谢🙏"><a href="#感谢🙏" class="headerlink" title="感谢🙏"></a>感谢🙏</h2><p><a href="https://github.com/iVoider/GenshinJailbreakBypass">Github作者iVoider</a></p><h2 id="更新1"><a href="#更新1" class="headerlink" title="更新1"></a>更新1</h2><p>BigBoss源上已有作者上传维护插件，名为 <strong>原神（国服）屏蔽越狱</strong> 。经测试可以正常使用，请直接前去下载安装。</p><h2 id="更新2"><a href="#更新2" class="headerlink" title="更新2"></a>更新2</h2><p>插件已经改名，叫做 <strong>原神防越狱检测</strong> 。</p>]]></content>
     
     
     <summary type="html">在2021-12-22 14:00，原神终于也对iOS越狱玩家出手了，iOS端原神开始检测越狱设备，提示“数据异常，请重新登录”。我在GitHub上搜索关键词发现一屏蔽越狱插件并修改完善后正常使用原神iOS端。</summary>
