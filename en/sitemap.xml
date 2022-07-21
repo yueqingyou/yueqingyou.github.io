@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://vccv.cc/en/categories/</loc>
+    <loc>https://vccv.cc/en/tags/</loc>
     
     <lastmod>2022-07-21</lastmod>
     
@@ -20,7 +20,7 @@
   </url>
   
   <url>
-    <loc>https://vccv.cc/en/tags/</loc>
+    <loc>https://vccv.cc/en/about/</loc>
     
     <lastmod>2022-07-21</lastmod>
     
@@ -29,7 +29,7 @@
   </url>
   
   <url>
-    <loc>https://vccv.cc/en/about/</loc>
+    <loc>https://vccv.cc/en/categories/</loc>
     
     <lastmod>2022-07-21</lastmod>
     
