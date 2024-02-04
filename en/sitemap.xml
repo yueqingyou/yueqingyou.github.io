@@ -2,36 +2,9 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://vccv.cc/en/article/jetbrains-activate.html</loc>
+    <loc>https://vccv.cc/en/tags/</loc>
     
-    <lastmod>2023-01-25</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://vccv.cc/en/article/docker-macos.html</loc>
-    
-    <lastmod>2023-01-19</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://vccv.cc/en/article/docker-easyconnect.html</loc>
-    
-    <lastmod>2023-01-19</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://vccv.cc/en/about/</loc>
-    
-    <lastmod>2023-01-13</lastmod>
+    <lastmod>2024-02-04</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -40,25 +13,7 @@
   <url>
     <loc>https://vccv.cc/en/tools/</loc>
     
-    <lastmod>2022-12-31</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://vccv.cc/en/article/omz-terminal.html</loc>
-    
-    <lastmod>2022-12-29</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://vccv.cc/en/article/ios-jailbreak-genshin.html</loc>
-    
-    <lastmod>2022-12-23</lastmod>
+    <lastmod>2024-02-04</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -67,106 +22,7 @@
   <url>
     <loc>https://vccv.cc/en/categories/</loc>
     
-    <lastmod>2022-12-19</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://vccv.cc/en/tags/</loc>
-    
-    <lastmod>2022-12-19</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://vccv.cc/en/article/conda-r-jupyter.html</loc>
-    
-    <lastmod>2022-12-15</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://vccv.cc/en/article/jailbreak-plugin-backup.html</loc>
-    
-    <lastmod>2022-12-15</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://vccv.cc/en/article/qinglong-jd.html</loc>
-    
-    <lastmod>2022-12-15</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://vccv.cc/en/article/passby-fix.html</loc>
-    
-    <lastmod>2022-12-15</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://vccv.cc/en/article/mac-tiling-yabai.html</loc>
-    
-    <lastmod>2022-12-15</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://vccv.cc/en/article/aria2-mac.html</loc>
-    
-    <lastmod>2022-12-15</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://vccv.cc/en/article/cactus-codeblock-beautify.html</loc>
-    
-    <lastmod>2022-12-05</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://vccv.cc/en/article/fancybox-cactus.html</loc>
-    
-    <lastmod>2022-12-05</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://vccv.cc/en/article/python-notebook.html</loc>
-    
-    <lastmod>2022-12-05</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://vccv.cc/en/article/takagi-san.html</loc>
-    
-    <lastmod>2022-12-05</lastmod>
+    <lastmod>2024-02-04</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -175,7 +31,151 @@
   <url>
     <loc>https://vccv.cc/en/search/</loc>
     
-    <lastmod>2022-11-14</lastmod>
+    <lastmod>2024-02-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://vccv.cc/en/about/</loc>
+    
+    <lastmod>2024-02-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://vccv.cc/en/article/docker-macos.html</loc>
+    
+    <lastmod>2023-12-19</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://vccv.cc/en/article/jetbrains-activate.html</loc>
+    
+    <lastmod>2023-09-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://vccv.cc/en/article/docker-easyconnect.html</loc>
+    
+    <lastmod>2022-12-28</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://vccv.cc/en/article/omz-terminal.html</loc>
+    
+    <lastmod>2022-12-07</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://vccv.cc/en/article/conda-r-jupyter.html</loc>
+    
+    <lastmod>2022-10-10</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://vccv.cc/en/article/ios-jailbreak-genshin.html</loc>
+    
+    <lastmod>2022-09-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://vccv.cc/en/article/mac-tiling-yabai.html</loc>
+    
+    <lastmod>2022-05-19</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://vccv.cc/en/article/takagi-san.html</loc>
+    
+    <lastmod>2022-03-26</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://vccv.cc/en/article/aria2-mac.html</loc>
+    
+    <lastmod>2022-03-19</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://vccv.cc/en/article/qinglong-jd.html</loc>
+    
+    <lastmod>2022-03-10</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://vccv.cc/en/article/jailbreak-plugin-backup.html</loc>
+    
+    <lastmod>2022-02-28</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://vccv.cc/en/article/fancybox-cactus.html</loc>
+    
+    <lastmod>2022-02-20</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://vccv.cc/en/article/passby-fix.html</loc>
+    
+    <lastmod>2022-01-01</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://vccv.cc/en/article/cactus-codeblock-beautify.html</loc>
+    
+    <lastmod>2021-12-27</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://vccv.cc/en/article/python-notebook.html</loc>
+    
+    <lastmod>2021-10-05</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -424,14 +424,14 @@
   </url>
   
   <url>
-    <loc>https://vccv.cc/en/categories/skill/droplet/</loc>
+    <loc>https://vccv.cc/en/categories/backup/</loc>
     <lastmod>2024-02-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://vccv.cc/en/categories/backup/</loc>
+    <loc>https://vccv.cc/en/categories/skill/droplet/</loc>
     <lastmod>2024-02-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -466,13 +466,6 @@
   </url>
   
   <url>
-    <loc>https://vccv.cc/en/categories/thinking/</loc>
-    <lastmod>2024-02-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://vccv.cc/en/categories/modified-crack/ios/</loc>
     <lastmod>2024-02-04</lastmod>
     <changefreq>weekly</changefreq>
@@ -488,6 +481,13 @@
   
   <url>
     <loc>https://vccv.cc/en/categories/modify-crack/ios/</loc>
+    <lastmod>2024-02-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://vccv.cc/en/categories/thinking/</loc>
     <lastmod>2024-02-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
