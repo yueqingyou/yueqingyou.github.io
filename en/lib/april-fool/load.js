@@ -1,0 +1,1 @@
+const now=new Date;if(now.getMonth()+1===4&&1===now.getDate()){const a=document.createElement("script"),b=(a.src="/lib/april-fool/matter.js",document.createElement("script"));b.src="/lib/april-fool/fool.js",document.body.appendChild(a),document.body.appendChild(b),console.log("Happy April Fools' Day!")}
