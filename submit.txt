@@ -8,8 +8,10 @@ https://vccv.cc/en/article/mac-tiling-yabai.html
 https://vccv.cc/en/article/takagi-san.html
 https://vccv.cc/en/article/aria2-mac.html
 https://vccv.cc/en/article/qinglong-jd.html
-https://vccv.cc/article/docker-macos.html
+https://vccv.cc/article/llm-transformers.html
 https://vccv.cc/article/aria2-mac.html
+https://vccv.cc/article/conda-linux.html
+https://vccv.cc/article/docker-macos.html
 https://vccv.cc/article/bilibili-qinglong.html
 https://vccv.cc/article/jailbreak-plugin-backup.html
 https://vccv.cc/article/jetbrains-activate.html
@@ -26,5 +28,3 @@ https://vccv.cc/article/ios-jailbreak-genshin.html
 https://vccv.cc/article/fancybox-twikoo.html
 https://vccv.cc/article/qinglong-jd.html
 https://vccv.cc/article/mac-tiling-yabai.html
-https://vccv.cc/article/takagi-san.html
-https://vccv.cc/article/fancybox-cactus.html

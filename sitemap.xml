@@ -4,16 +4,7 @@
   <url>
     <loc>https://vccv.cc/vercel.json</loc>
     
-    <lastmod>2024-02-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://vccv.cc/tools/</loc>
-    
-    <lastmod>2024-02-04</lastmod>
+    <lastmod>2024-03-14</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -22,7 +13,7 @@
   <url>
     <loc>https://vccv.cc/search/</loc>
     
-    <lastmod>2024-02-04</lastmod>
+    <lastmod>2024-03-14</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -31,7 +22,16 @@
   <url>
     <loc>https://vccv.cc/tags/</loc>
     
-    <lastmod>2024-02-04</lastmod>
+    <lastmod>2024-03-14</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://vccv.cc/tools/</loc>
+    
+    <lastmod>2024-03-14</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -40,7 +40,7 @@
   <url>
     <loc>https://vccv.cc/about/</loc>
     
-    <lastmod>2024-02-04</lastmod>
+    <lastmod>2024-03-14</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -49,7 +49,7 @@
   <url>
     <loc>https://vccv.cc/categories/</loc>
     
-    <lastmod>2024-02-04</lastmod>
+    <lastmod>2024-03-14</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -58,7 +58,34 @@
   <url>
     <loc>https://vccv.cc/404.html</loc>
     
-    <lastmod>2024-02-04</lastmod>
+    <lastmod>2024-03-14</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://vccv.cc/article/llm-transformers.html</loc>
+    
+    <lastmod>2024-03-14</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://vccv.cc/article/aria2-mac.html</loc>
+    
+    <lastmod>2024-03-13</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://vccv.cc/article/conda-linux.html</loc>
+    
+    <lastmod>2024-03-10</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -68,15 +95,6 @@
     <loc>https://vccv.cc/article/docker-macos.html</loc>
     
     <lastmod>2023-12-20</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://vccv.cc/article/aria2-mac.html</loc>
-    
-    <lastmod>2023-11-15</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -256,7 +274,7 @@
 
   <url>
     <loc>https://vccv.cc/</loc>
-    <lastmod>2024-02-04</lastmod>
+    <lastmod>2024-03-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -264,266 +282,294 @@
   
   <url>
     <loc>https://vccv.cc/tags/macos/</loc>
-    <lastmod>2024-02-04</lastmod>
+    <lastmod>2024-03-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://vccv.cc/tags/aria2/</loc>
-    <lastmod>2024-02-04</lastmod>
+    <lastmod>2024-03-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://vccv.cc/tags/qinglong/</loc>
-    <lastmod>2024-02-04</lastmod>
+    <lastmod>2024-03-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://vccv.cc/tags/droplet/</loc>
-    <lastmod>2024-02-04</lastmod>
+    <lastmod>2024-03-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://vccv.cc/tags/bilibili/</loc>
-    <lastmod>2024-02-04</lastmod>
+    <lastmod>2024-03-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://vccv.cc/tags/r/</loc>
-    <lastmod>2024-02-04</lastmod>
+    <lastmod>2024-03-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://vccv.cc/tags/jupyter/</loc>
-    <lastmod>2024-02-04</lastmod>
+    <lastmod>2024-03-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://vccv.cc/tags/codeblock/</loc>
-    <lastmod>2024-02-04</lastmod>
+    <lastmod>2024-03-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://vccv.cc/tags/beautify/</loc>
-    <lastmod>2024-02-04</lastmod>
+    <lastmod>2024-03-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://vccv.cc/tags/cactus/</loc>
-    <lastmod>2024-02-04</lastmod>
+    <lastmod>2024-03-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://vccv.cc/tags/conda/</loc>
-    <lastmod>2024-02-04</lastmod>
+    <lastmod>2024-03-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://vccv.cc/tags/nvidia/</loc>
+    <lastmod>2024-03-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://vccv.cc/tags/cuda/</loc>
+    <lastmod>2024-03-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://vccv.cc/tags/transformers/</loc>
+    <lastmod>2024-03-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://vccv.cc/tags/docker/</loc>
-    <lastmod>2024-02-04</lastmod>
+    <lastmod>2024-03-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://vccv.cc/tags/easyconnect/</loc>
-    <lastmod>2024-02-04</lastmod>
+    <lastmod>2024-03-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://vccv.cc/tags/clash/</loc>
-    <lastmod>2024-02-04</lastmod>
+    <lastmod>2024-03-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://vccv.cc/tags/colima/</loc>
-    <lastmod>2024-02-04</lastmod>
+    <lastmod>2024-03-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://vccv.cc/tags/fancybox/</loc>
-    <lastmod>2024-02-04</lastmod>
+    <lastmod>2024-03-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://vccv.cc/tags/twikoo/</loc>
-    <lastmod>2024-02-04</lastmod>
+    <lastmod>2024-03-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://vccv.cc/tags/android/</loc>
-    <lastmod>2024-02-04</lastmod>
+    <lastmod>2024-03-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://vccv.cc/tags/httpcanary/</loc>
-    <lastmod>2024-02-04</lastmod>
+    <lastmod>2024-03-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://vccv.cc/tags/hkrpg/</loc>
-    <lastmod>2024-02-04</lastmod>
+    <lastmod>2024-03-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://vccv.cc/tags/ios/</loc>
-    <lastmod>2024-02-04</lastmod>
+    <lastmod>2024-03-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://vccv.cc/tags/old-app/</loc>
-    <lastmod>2024-02-04</lastmod>
+    <lastmod>2024-03-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://vccv.cc/tags/genshin-impact/</loc>
-    <lastmod>2024-02-04</lastmod>
+    <loc>https://vccv.cc/tags/genshin/</loc>
+    <lastmod>2024-03-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://vccv.cc/tags/jailbreak/</loc>
-    <lastmod>2024-02-04</lastmod>
+    <lastmod>2024-03-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://vccv.cc/tags/crack/</loc>
-    <lastmod>2024-02-04</lastmod>
+    <lastmod>2024-03-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://vccv.cc/tags/jetbrains/</loc>
-    <lastmod>2024-02-04</lastmod>
+    <lastmod>2024-03-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://vccv.cc/tags/ksjsb/</loc>
-    <lastmod>2024-02-04</lastmod>
+    <lastmod>2024-03-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://vccv.cc/tags/charles/</loc>
-    <lastmod>2024-02-04</lastmod>
+    <lastmod>2024-03-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://vccv.cc/tags/vmos/</loc>
-    <lastmod>2024-02-04</lastmod>
+    <lastmod>2024-03-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://vccv.cc/tags/huggingface/</loc>
+    <lastmod>2024-03-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://vccv.cc/tags/yabai/</loc>
-    <lastmod>2024-02-04</lastmod>
+    <lastmod>2024-03-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://vccv.cc/tags/terminal/</loc>
-    <lastmod>2024-02-04</lastmod>
+    <lastmod>2024-03-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://vccv.cc/tags/oh-my-zsh/</loc>
-    <lastmod>2024-02-04</lastmod>
+    <lastmod>2024-03-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://vccv.cc/tags/passby/</loc>
-    <lastmod>2024-02-04</lastmod>
+    <lastmod>2024-03-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://vccv.cc/tags/theos/</loc>
-    <lastmod>2024-02-04</lastmod>
+    <lastmod>2024-03-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://vccv.cc/tags/jd/</loc>
-    <lastmod>2024-02-04</lastmod>
+    <lastmod>2024-03-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://vccv.cc/tags/xcode/</loc>
-    <lastmod>2024-02-04</lastmod>
+    <lastmod>2024-03-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://vccv.cc/tags/takagi-san/</loc>
-    <lastmod>2024-02-04</lastmod>
+    <lastmod>2024-03-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://vccv.cc/tags/takagi-san/</loc>
-    <lastmod>2024-02-04</lastmod>
+    <lastmod>2024-03-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -531,106 +577,148 @@
 
   
   <url>
-    <loc>https://vccv.cc/categories/tips/</loc>
-    <lastmod>2024-02-04</lastmod>
+    <loc>https://vccv.cc/categories/macos/</loc>
+    <lastmod>2024-03-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://vccv.cc/categories/theme/</loc>
-    <lastmod>2024-02-04</lastmod>
+    <loc>https://vccv.cc/categories/linux/</loc>
+    <lastmod>2024-03-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://vccv.cc/categories/tips/macos/</loc>
-    <lastmod>2024-02-04</lastmod>
+    <loc>https://vccv.cc/categories/hexo/</loc>
+    <lastmod>2024-03-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://vccv.cc/categories/tips/droplet/</loc>
-    <lastmod>2024-02-04</lastmod>
+    <loc>https://vccv.cc/categories/macos/tips/</loc>
+    <lastmod>2024-03-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://vccv.cc/categories/fiddler/</loc>
-    <lastmod>2024-02-04</lastmod>
+    <loc>https://vccv.cc/categories/linux/tips/</loc>
+    <lastmod>2024-03-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://vccv.cc/categories/tips/ios/</loc>
-    <lastmod>2024-02-04</lastmod>
+    <loc>https://vccv.cc/categories/hexo/theme/</loc>
+    <lastmod>2024-03-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://vccv.cc/categories/crack-fix/</loc>
-    <lastmod>2024-02-04</lastmod>
+    <loc>https://vccv.cc/categories/android/</loc>
+    <lastmod>2024-03-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://vccv.cc/categories/backup/</loc>
-    <lastmod>2024-02-04</lastmod>
+    <loc>https://vccv.cc/categories/ios/</loc>
+    <lastmod>2024-03-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://vccv.cc/categories/tips/fiddler/</loc>
-    <lastmod>2024-02-04</lastmod>
+    <loc>https://vccv.cc/categories/thinking/</loc>
+    <lastmod>2024-03-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://vccv.cc/categories/tips/unix/</loc>
-    <lastmod>2024-02-04</lastmod>
+    <loc>https://vccv.cc/categories/unix/</loc>
+    <lastmod>2024-03-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://vccv.cc/categories/tips/droplet/qinglong/</loc>
-    <lastmod>2024-02-04</lastmod>
+    <loc>https://vccv.cc/categories/linux/tips/qinglong/</loc>
+    <lastmod>2024-03-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://vccv.cc/categories/random-mind/</loc>
-    <lastmod>2024-02-04</lastmod>
+    <loc>https://vccv.cc/categories/android/fiddler/</loc>
+    <lastmod>2024-03-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://vccv.cc/categories/fiddler/android/</loc>
-    <lastmod>2024-02-04</lastmod>
+    <loc>https://vccv.cc/categories/ios/tips/</loc>
+    <lastmod>2024-03-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://vccv.cc/categories/crack-fix/ios/</loc>
-    <lastmod>2024-02-04</lastmod>
+    <loc>https://vccv.cc/categories/ios/crack/</loc>
+    <lastmod>2024-03-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://vccv.cc/categories/backup/ios/</loc>
-    <lastmod>2024-02-04</lastmod>
+    <loc>https://vccv.cc/categories/ios/backup/</loc>
+    <lastmod>2024-03-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://vccv.cc/categories/android/tips/</loc>
+    <lastmod>2024-03-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://vccv.cc/categories/thinking/nlp/</loc>
+    <lastmod>2024-03-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://vccv.cc/categories/unix/tips/</loc>
+    <lastmod>2024-03-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://vccv.cc/categories/android/tips/fiddler/</loc>
+    <lastmod>2024-03-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://vccv.cc/categories/thinking/nlp/llm/</loc>
+    <lastmod>2024-03-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://vccv.cc/categories/thinking/anime/</loc>
+    <lastmod>2024-03-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
