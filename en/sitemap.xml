@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://vccv.cc/en/tools/</loc>
+    <loc>https://vccv.cc/en/search/</loc>
     
     <lastmod>2024-03-14</lastmod>
     
@@ -20,16 +20,7 @@
   </url>
   
   <url>
-    <loc>https://vccv.cc/en/search/</loc>
-    
-    <lastmod>2024-03-14</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://vccv.cc/en/categories/</loc>
+    <loc>https://vccv.cc/en/tools/</loc>
     
     <lastmod>2024-03-14</lastmod>
     
@@ -39,6 +30,15 @@
   
   <url>
     <loc>https://vccv.cc/en/about/</loc>
+    
+    <lastmod>2024-03-14</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://vccv.cc/en/categories/</loc>
     
     <lastmod>2024-03-14</lastmod>
     
@@ -324,13 +324,6 @@
   </url>
   
   <url>
-    <loc>https://vccv.cc/en/tags/yabai/</loc>
-    <lastmod>2024-03-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://vccv.cc/en/tags/terminal/</loc>
     <lastmod>2024-03-14</lastmod>
     <changefreq>weekly</changefreq>
@@ -339,6 +332,13 @@
   
   <url>
     <loc>https://vccv.cc/en/tags/oh-my-zsh/</loc>
+    <lastmod>2024-03-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://vccv.cc/en/tags/yabai/</loc>
     <lastmod>2024-03-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -424,14 +424,14 @@
   </url>
   
   <url>
-    <loc>https://vccv.cc/en/categories/backup/</loc>
+    <loc>https://vccv.cc/en/categories/skill/droplet/</loc>
     <lastmod>2024-03-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://vccv.cc/en/categories/skill/droplet/</loc>
+    <loc>https://vccv.cc/en/categories/backup/</loc>
     <lastmod>2024-03-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -446,27 +446,6 @@
   
   <url>
     <loc>https://vccv.cc/en/categories/modify-crack/</loc>
-    <lastmod>2024-03-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://vccv.cc/en/categories/notes/</loc>
-    <lastmod>2024-03-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://vccv.cc/en/categories/skill/linux/</loc>
-    <lastmod>2024-03-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://vccv.cc/en/categories/thinking/</loc>
     <lastmod>2024-03-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -488,6 +467,27 @@
   
   <url>
     <loc>https://vccv.cc/en/categories/modify-crack/ios/</loc>
+    <lastmod>2024-03-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://vccv.cc/en/categories/notes/</loc>
+    <lastmod>2024-03-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://vccv.cc/en/categories/skill/linux/</loc>
+    <lastmod>2024-03-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://vccv.cc/en/categories/thinking/</loc>
     <lastmod>2024-03-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
