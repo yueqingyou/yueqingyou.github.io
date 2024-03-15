@@ -6,7 +6,7 @@
   <link href="https://vccv.cc/en/atom.xml" rel="self"/>
   <link href="https://pubsubhubbub.appspot.com/" rel="hub"/>
   <link href="https://vccv.cc/en/"/>
-  <updated>2022-12-07T02:04:46.000Z</updated>
+  <updated>2024-03-14T02:17:56.000Z</updated>
   <id>https://vccv.cc/en/</id>
   
   <author>
@@ -24,6 +24,118 @@
 
   
   <entry>
+    <title>Thinkings about the hugging face document</title>
+    <link href="https://vccv.cc/en/article/llm-transformers.html"/>
+    <id>https://vccv.cc/en/article/llm-transformers.html</id>
+    <published>2024-03-11T11:17:56.000Z</published>
+    <updated>2024-03-14T02:17:56.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Single-GPU-Optimization"><a href="#Single-GPU-Optimization" class="headerlink" title="Single GPU Optimization"></a>Single GPU Optimization</h2><p>Resource: <a href="https://huggingface.co/docs/transformers/main/en/perf_train_gpu_one">Hugging Face Doc</a></p><table><thead><tr><th>Method/tool</th><th>Improves training speed</th><th>Optimizes memory utilization</th></tr></thead><tbody><tr><td><a href="https://huggingface.co/docs/transformers/main/en/perf_train_gpu_one#batch-size-choice">Batch size choice</a></td><td>Yes</td><td>Yes</td></tr><tr><td><a href="https://huggingface.co/docs/transformers/main/en/perf_train_gpu_one#gradient-accumulation">Gradient accumulation</a></td><td>No</td><td>Yes</td></tr><tr><td><a href="https://huggingface.co/docs/transformers/main/en/perf_train_gpu_one#gradient-checkpointing">Gradient checkpointing</a></td><td>No</td><td>Yes</td></tr><tr><td><a href="https://huggingface.co/docs/transformers/main/en/perf_train_gpu_one#mixed-precision-training">Mixed precision training</a></td><td>Yes</td><td>(<strong>No</strong>)</td></tr><tr><td><a href="https://huggingface.co/docs/transformers/main/en/perf_train_gpu_one#optimizer-choice">Optimizer choice</a></td><td>Yes</td><td>Yes</td></tr><tr><td><a href="https://huggingface.co/docs/transformers/main/en/perf_train_gpu_one#data-preloading">Data preloading</a></td><td>Yes</td><td>No</td></tr><tr><td><a href="https://huggingface.co/docs/transformers/main/en/perf_train_gpu_one#deepspeed-zero">DeepSpeed Zero</a></td><td>No</td><td>Yes</td></tr><tr><td><a href="https://huggingface.co/docs/transformers/main/en/perf_train_gpu_one#using-torchcompile">torch.compile</a></td><td>Yes</td><td>No</td></tr><tr><td><a href="https://huggingface.co/docs/transformers/main/en/perf_train_gpu_one#using--peft">Parameter-Efficient Fine Tuning (PEFT)</a></td><td>No</td><td>Yes</td></tr></tbody></table><h3 id="FP16"><a href="#FP16" class="headerlink" title="FP16"></a>FP16</h3><blockquote><p>If your model doesn’t work well with mixed precision, for example if it wasn’t pretrained in mixed precision, you may encounter overflow or underflow issues which can cause NaN loss. For these cases, you should use full fp32 precision by explicitly disabling the default fp16 mode.</p></blockquote><h3 id="ZERO"><a href="#ZERO" class="headerlink" title="ZERO"></a>ZERO</h3><p>stage 1 Optimizer state</p><p>stage 2 Optimizer state + gradient</p><p>stage 3 optimizer state + gradient + model parameters (weights) </p><p>The inference stage zero-1 zero-2 does nothing, only zero-3 can be set (no optimizer is needed for the inference stage and no gradient is generated). Also if Transformers&lt;4.28, you need to set <code>synced_gpus=True</code> when generating.</p><blockquote><p>Using multiple GPUs with ZeRO-3 for generation requires synchronizing the GPUs by setting <code>synced_gpus=True</code> in the <a href="https://huggingface.co/docs/transformers/main/en/model_doc/phi#transformers.PhiForCausalLM.generate">generate()</a> method. Otherwise, if one GPU is finished generating before another one, the whole system hangs because the remaining GPUs haven’t received the weight shard from the GPU that finished first.</p><p>For Transformers&gt;=4.28, if <code>synced_gpus</code> is automatically set to <code>True</code> if multiple GPUs are detected during generation.</p></blockquote><p>If offload is configured, you need to choose an optimizer that is adapted to both CPU and GPU, and the commonly used Adam cannot be used.</p><blockquote><p>DeepSpeed and Transformers optimizer and scheduler can be mixed and matched as long as you don’t enable <code>offload_optimizer</code>. When <code>offload_optimizer</code> is enabled, you could use a <u>non-DeepSpeed optimizer</u> (except for LAMB) as long as it has <u>both a CPU and GPU implementation</u>.</p></blockquote><h2 id="Multi-GPU-Optimization"><a href="#Multi-GPU-Optimization" class="headerlink" title="Multi-GPU Optimization"></a>Multi-GPU Optimization</h2><p>Resource: <a href="https://huggingface.co/docs/transformers/main/en/perf_train_gpu_many">Hugging Face Doc</a></p><p>It’s mostly just a few latitudes of parallelism: Data + Pipeline + Tensor.</p><h2 id="Confusion"><a href="#Confusion" class="headerlink" title="Confusion"></a>Confusion</h2><h3 id="FP16-1"><a href="#FP16-1" class="headerlink" title="FP16"></a>FP16</h3><p>Only speeds up the training process, <strong>not necessarily</strong> reduces the memory footprint (maybe even by a factor of 1.5).</p><blockquote><p>While mixed precision training results in faster computations, it can also lead to more GPU memory being utilized, especially for small batch sizes. <u>This is because the model is now present on the GPU in both 16-bit and 32-bit precision</u> (1.5x the original model on the GPU). From: <a href="https://huggingface.co/docs/transformers/main/en/perf_train_gpu_one#mixed-precision-training">Hugging Face Doc</a></p><p><u>Note</u>: when using mixed precision with a small model and a large batch size, there will be some memory savings but with a large model and a small batch size, the memory use will be larger.</p></blockquote><h4 id="Small-models-large-batch-sizes"><a href="#Small-models-large-batch-sizes" class="headerlink" title="Small models, large batch sizes"></a>Small models, large batch sizes</h4><ul><li><strong>MEMORY SAVINGS</strong>: For small models, the model parameters and weights take up relatively little memory. When training with large batch sizes, the memory occupied by activations and gradients becomes the main memory usage part. In this case, converting activations and gradients to FP16 can significantly reduce this portion of memory usage, as FP16 occupies half the memory of FP32. Even when considering the retention of FP32-accurate copies of the model weights, the overall memory usage is still reduced because the memory savings of the activations and gradients outweigh the memory overhead of the additional copies of the weights.</li><li><strong>EFFICIENCY AND SAVINGS</strong>: Large batch sizes mean that more data is processed per iteration, which increases the amount of memory required to compute activations and gradients. Since this part now uses FP16, the overall memory requirement is reduced compared to using only FP32.</li></ul><h4 id="Large-model-small-batch-size"><a href="#Large-model-small-batch-size" class="headerlink" title="Large model, small batch size"></a>Large model, small batch size</h4><ul><li><strong>Increased memory usage</strong>: for large models, the model parameters and weights themselves take up a lot of memory. In mixed-precision training, even if the activations and gradients are stored as FP16, a copy of the FP32-precision weights still needs to be retained to ensure the accuracy of the updates. This means that the additional memory overhead (due to the FP32 copy of the weights) is a relatively large part of the total memory footprint relative to the size of the model itself. When the batch size is small, the activations and gradients take up relatively little memory, so the memory saving effect from FP16 is not enough to offset the additional memory usage added by keeping FP32 weight copies.</li><li><strong>Impact of weighted copies</strong>: in this case, the additional memory used by FP32 weighted copies becomes a significant factor because the model itself is large. Even if FP16 is used for activation and gradient, the total memory usage may still increase due to FP32 weighted copies.</li></ul><h3 id="Gradient-accumulation"><a href="#Gradient-accumulation" class="headerlink" title="Gradient accumulation"></a>Gradient accumulation</h3><p>Effective batch = gradient accumulation * actual batch.</p><div class="highlight-wrap" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">training_args = TrainingArguments(per_device_train_batch_size=<span class="number">1</span>, gradient_accumulation_steps=<span class="number">4</span>, **default_args)</span><br></pre></td></tr></table></figure></div><p>In the above example, your effective batch size becomes 4.</p><div class="highlight-wrap" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> epoch <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>): <span class="comment"># Assume 2 epochs of training</span></span><br><span class="line">    <span class="keyword">for</span> i, (inputs, labels) <span class="keyword">in</span> <span class="built_in">enumerate</span>(dataloader):: inputs = torch.tensor(inputs, dtype=torch.float32): <span class="comment"># Suppose train 2 epochs.</span></span><br><span class="line">        inputs = torch.tensor(inputs, dtype=torch.float32)</span><br><span class="line">        labels = torch.tensor(labels, dtype=torch.long)</span><br><span class="line">        <span class="comment"># Forward propagation</span></span><br><span class="line">        outputs = model(inputs)</span><br><span class="line">        loss = criterion(outputs, labels) / accumulation_steps <span class="comment"># Note that this is divided by the number of accumulated steps</span></span><br><span class="line">        <span class="comment"># Backward propagation</span></span><br><span class="line">        loss.backward()</span><br><span class="line">        <span class="comment"># Update model parameters every accumulation_steps</span></span><br><span class="line">        <span class="keyword">if</span> (i + <span class="number">1</span>) % accumulation_steps == <span class="number">0</span> <span class="keyword">or</span> (i + <span class="number">1</span>) == <span class="built_in">len</span>(dataloader).</span><br><span class="line">            optimizer.step() <span class="comment"># update parameters</span></span><br><span class="line">            optimizer.zero_grad() <span class="comment"># clear the gradient</span></span><br></pre></td></tr></table></figure></div><p>BP is required each time, but the optimizer updates the parameters only when the cumulative number of gradient steps is reached.</p><blockquote><p>optimizer.step() vs optimizer.zero_grad()</p><p>Normal training flow: zero_grad then step Avoid the gradient computed by previous batch to affect the current optimizer state.</p><p>Gradient accumulation process: step then zero_grad As the name suggests, we want to let the gradient accumulation take effect and then update the parameters at the end.</p></blockquote><p>Prioritize the <code>per_device_train_batch_size</code> setting that guarantees the GPU limit is reached before considering accumulation.</p><blockquote><p>While it is advised to max out GPU usage as much as possible, a high number of gradient accumulation steps can result in a more pronounced training slowdown. Consider the following example. Let’s say, the <code>per_device_train_batch_size=4</code> without gradient accumulation hits the GPU’s limit. If you would like to train with batches of size 64, do not set the <code>per_device_train_batch_size</code> to 1 and <code>gradient_accumulation_steps</code> to 64. Instead, keep <code>per_device_train_batch_size=4</code> and set <code>gradient_accumulation_steps=16</code>. This results in the same effective batch size while making better use of the available GPU resources.</p></blockquote><p>It is not known whether gradient accumulation causes excess memory usage. Or rather I don’t think it does, I think the gradient just changes from one number to another number resulting from multiple accumulations, the data format doesn’t change and the number of bytes taken up doesn’t change. In practice it seems to have an effect, but I can’t find a reason to rationalize it.</p><h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://huggingface.co/docs/transformers/main/en/perf_train_gpu_one">Hugging Face Doc</a></p>]]></content>
+    
+    
+    <summary type="html">Briefly record the conclusions and methods that appear in the official documentation of hugging face. By the way, record some personal thinking and confusion, so that it is convenient to go back and solve the problem later. Welcome to comment.</summary>
+    
+    
+    
+    <category term="thinking" scheme="https://vccv.cc/en/categories/thinking/"/>
+    
+    <category term="nlp" scheme="https://vccv.cc/en/categories/thinking/nlp/"/>
+    
+    <category term="llm" scheme="https://vccv.cc/en/categories/thinking/nlp/llm/"/>
+    
+    
+    <category term="transformers" scheme="https://vccv.cc/en/tags/transformers/"/>
+    
+    <category term="huggingface" scheme="https://vccv.cc/en/tags/huggingface/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Non-Root Installation of CUDA NLP by Conda</title>
+    <link href="https://vccv.cc/en/article/cuda-conda-nlp.html"/>
+    <id>https://vccv.cc/en/article/cuda-conda-nlp.html</id>
+    <published>2024-03-10T08:13:14.000Z</published>
+    <updated>2024-03-10T08:13:14.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>Non-ROOT users configure a remote CUDA server for a deep learning environment, below is an example of Pytorch.</p><h2 id="CUDA-driver"><a href="#CUDA-driver" class="headerlink" title="CUDA driver"></a>CUDA driver</h2><p>Check the version of CUDA already installed on the server:</p><div class="highlight-wrap" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvcc -V</span><br></pre></td></tr></table></figure></div><p>Showing version 11.4 here, but it doesn’t matter. Next to check the driver version, this relates to the latest CUDA version that we can install in the conda virtual environment.</p><div class="highlight-wrap" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">nvidia-smi</span><br><span class="line"></span><br><span class="line"><span class="comment">### Output</span></span><br><span class="line"><span class="comment">### Driver Version: 535.129.03   CUDA Version: 12.2</span></span><br></pre></td></tr></table></figure></div><blockquote><p>Tips:</p><p>The CUDA Version shown here is 12.2, which is actually the latest CUDA version that the CUDA driver installed on the server supports to install, which means that the highest CUDA version we can install next is 12.2, and the CUDA version that has already been installed on this machine is 11.4.</p><p>Because we are a NON-ROOT user, we can’t change the <u>installed driver version</u>, but we can install the new CUDA version through the Conda virtual environment.</p></blockquote><h2 id="Conda"><a href="#Conda" class="headerlink" title="Conda"></a>Conda</h2><p>When configuring python-related environments for non-root users, I extremely recommend using the conda package manager for dependency management (in fact, it’s also recommended for those using R).</p><p>I’m installing the miniconda version here (the minimized version), but you can also install anaconda (the full version).</p><p>The blog has been written about <a href="https://vccv.cc/en/article/conda-r-jupyter.html">related content</a> before.</p><div class="highlight-wrap" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># I installed the environment with python 3.10</span></span><br><span class="line">conda create -n torch python=3.10</span><br><span class="line">conda activate torch</span><br></pre></td></tr></table></figure></div><h2 id="Pytorch"><a href="#Pytorch" class="headerlink" title="Pytorch"></a>Pytorch</h2><p>You can check the Pytorch history release at <a href="https://pytorch.org/get-started/previous-versions/">Pytorch History Release</a> and combine it with your own needs (e.g., [Colossal-AI](https:// colossalai.org/zh-Hans/docs/get_started/installation/) requires PyTorch &gt;= 1.11 and PyTorch &lt;= 2.1). I ended up with pytorch==2.1.0 and CUDA==11.8.</p><div class="highlight-wrap" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># CUDA 11.8</span></span><br><span class="line"><span class="comment"># Less than the maximum supported driver version 12.2 but more than the installed CUDA version 11.4</span></span><br><span class="line"><span class="comment"># Try not to jump to a bigger version</span></span><br><span class="line"><span class="comment"># For example, if I have 11.4 installed on my machine, then I would install it with cuda=11.8. Does it seem to be a problem to install 12.1?</span></span><br><span class="line">conda install pytorch==2.1.0 torchvision==0.16.0 torchaudio==2.1.0 pytorch-cuda=11.8 -c pytorch -c nvidia</span><br></pre></td></tr></table></figure></div><blockquote><p>Thinking:</p><p>As for why pytorch doesn’t redistribute for some cuda versions, in this <a href="https://github.com/pytorch/pytorch/issues/75992">issue</a> one of pytorch’s developers explains that pytorch-cuda113 can be used on cuda114 This simply means that there is no need to re-release it, and that the 113 version can be used for the 114 version.</p><p><a data-fancybox="gallery" data-src="cuda-conda-nlp/image-20240315144020525.webp" data-caption="pytorch-cuda"><picture>               <source srcset="cuda-conda-nlp/image-20240315144020525.webp" type="image/webp">               <img src="cuda-conda-nlp/image-20240315144020525.png" alt="pytorch-cuda"></picture></a></p></blockquote><p>Check availability</p><div class="highlight-wrap" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">(torch) [username/pwd]$ python</span><br><span class="line">Python 3.10.13 (main, Sep 11 2023, 13:44:35) [GCC 11.2.0] on linux</span><br><span class="line">Type <span class="string">&quot;help&quot;</span>, <span class="string">&quot;copyright&quot;</span>, <span class="string">&quot;credits&quot;</span> or <span class="string">&quot;license&quot;</span> <span class="keyword">for</span> more information.</span><br><span class="line">&gt;&gt;&gt; import torch</span><br><span class="line">&gt;&gt;&gt; torch.cuda.is_available()</span><br><span class="line">True</span><br><span class="line">&gt;&gt;&gt; <span class="built_in">exit</span>()</span><br></pre></td></tr></table></figure></div><h2 id="CUDA"><a href="#CUDA" class="headerlink" title="CUDA"></a>CUDA</h2><p>At <a href="https://anaconda.org/nvidia/cuda">Nvidia-Cuda</a> look for the CUDA version corresponding to the installed Pytorch, in my case 11.8.</p><div class="highlight-wrap" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># In nvidia, this channel doesn&#x27;t even show a progress bar when downloading packages.</span></span><br><span class="line"><span class="comment"># It will only show 0% or 100%, but the download speed is fine, it&#x27;s not walled off, just wait patiently.</span></span><br><span class="line">conda install nvidia/label/cuda-11.8.0::cuda</span><br></pre></td></tr></table></figure></div><p>At this point, enter the <code>nvcc -V</code> command to find that the installed version is now 11.8.</p><p><a data-fancybox="gallery" data-src="cuda-conda-nlp/image-20240315144208260.webp" data-caption="nvcc -V"><picture>               <source srcset="cuda-conda-nlp/image-20240315144208260.webp" type="image/webp">               <img src="cuda-conda-nlp/image-20240315144208260.png" alt="nvcc -V"></picture></a></p><h3 id="Cuda-installed-using-conda"><a href="#Cuda-installed-using-conda" class="headerlink" title="Cuda installed using conda"></a>Cuda installed using conda</h3><div class="highlight-wrap" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># This prevents programs that cannot find the CUDA (11.8) installed by conda from using the CUDA (11.4) that comes with the system.</span></span><br><span class="line"><span class="built_in">export</span> CUDA_HOME=<span class="variable">$CONDA_PREFIX</span></span><br></pre></td></tr></table></figure></div><h2 id="Extra"><a href="#Extra" class="headerlink" title="Extra"></a>Extra</h2><h3 id="gcc-clang-g-clang"><a href="#gcc-clang-g-clang" class="headerlink" title="gcc clang g++ clang++"></a>gcc clang g++ clang++</h3><div class="highlight-wrap" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># The server comes with a version of gcc that is too low and doesn&#x27;t even support g++. Use conda to install it and it works straight away.</span></span><br><span class="line">conda install -c conda-forge cxx-compiler</span><br></pre></td></tr></table></figure></div><h3 id="xformers"><a href="#xformers" class="headerlink" title="xformers"></a>xformers</h3><div class="highlight-wrap" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Official repository suggested commands</span></span><br><span class="line">conda install xformers -c xformers</span><br><span class="line"></span><br><span class="line"><span class="comment"># Be sure to double-check the package change log before confirming the installation.</span></span><br><span class="line"><span class="comment"># There is a chance that it could replace an installed version of pytorch, so don&#x27;t install it.</span></span><br><span class="line"><span class="comment"># Try adding -c nvidia -c pytorch and you should be fine.</span></span><br><span class="line">conda install xformers -c xformers -c nvidia -c pytorch</span><br></pre></td></tr></table></figure></div><h3 id="transformers-amp-datasets-amp-accelerate"><a href="#transformers-amp-datasets-amp-accelerate" class="headerlink" title="transformers &amp; datasets &amp; accelerate"></a>transformers &amp; datasets &amp; accelerate</h3><div class="highlight-wrap" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Installation with conda may not be the latest version</span></span><br><span class="line">pip install transformers datasets accelerate -U</span><br></pre></td></tr></table></figure></div><h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://anaconda.org/nvidia/cuda">Nvidia-Cuda</a></p><p><a href="https://pytorch.org/get-started/previous-versions/">Pytorch History Release</a></p><p><a href="https://github.com/pytorch/pytorch/issues/75992">Pytorch Github Issue</a></p>]]></content>
+    
+    
+    <summary type="html">How a non-root user can install a newer version of the transformers suite without being able to change the version of the installed cuda driver.</summary>
+    
+    
+    
+    <category term="linux" scheme="https://vccv.cc/en/categories/linux/"/>
+    
+    <category term="technique" scheme="https://vccv.cc/en/categories/linux/technique/"/>
+    
+    
+    <category term="conda" scheme="https://vccv.cc/en/tags/conda/"/>
+    
+    <category term="nvidia" scheme="https://vccv.cc/en/tags/nvidia/"/>
+    
+    <category term="cuda" scheme="https://vccv.cc/en/tags/cuda/"/>
+    
+    <category term="transformers" scheme="https://vccv.cc/en/tags/transformers/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Switch Xcode to Compile Unadapted Theos Plugins</title>
+    <link href="https://vccv.cc/en/article/switch-xcode-theos.html"/>
+    <id>https://vccv.cc/en/article/switch-xcode-theos.html</id>
+    <published>2023-04-24T14:52:25.000Z</published>
+    <updated>2023-04-24T14:52:25.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Preface"><a href="#Preface" class="headerlink" title="Preface"></a>Preface</h2><p>Recently, I need to recompile an iOS jailbreak plugin named <a href="https://github.com/giorgioiavicoli/PassBy">PassBy</a>, and found that it reported errors frequently on my new device, so I recorded the exploration and solution process below.</p><p>Since I’m not a professional, and I don’t even know much about iOS development, this is a record of my exploration with the attitude of learning. If there are any mistakes, welcome to criticize and correct in the comment section.</p><blockquote><p>By the way, I would like to advertise my other related article haha:</p><p><a href="https://vccv.cc/article/passby-fix.html">iOS Jailbreak Plugin PassBy Customization</a>, documenting my attempts to solve PassBy’s non-recognition of Bluetooth wearable devices other than the Apple Watch.</p></blockquote><h2 id="Trying-to-compile"><a href="#Trying-to-compile" class="headerlink" title="Trying to compile"></a>Trying to compile</h2><h3 id="Firstly"><a href="#Firstly" class="headerlink" title="Firstly"></a>Firstly</h3><blockquote><p>System: macOS Monterey 12.6.5</p><p>Chip type: Intel chip, not M series</p><p>Xcode version: 14.2</p></blockquote><p>I first tried to compile directly by typing <code>make package</code>, which prompted openURL has been deprecated.</p><p><a data-fancybox="gallery" data-src="switch-xcode-theos/image-20240315141449391.webp" data-caption="openurl deprecated"><picture>               <source srcset="switch-xcode-theos/image-20240315141449391.webp" type="image/webp">               <img src="switch-xcode-theos/image-20240315141449391.png" alt="openurl deprecated"></picture></a></p><p>At this point I guessed that the Xcode version was too high to cause the mismatch, and I was going to go to the <a href="https://github.com/giorgioiavicoli/PassBy">source code</a> on GitHub first to see if the author had made any updates. Unfortunately, there was nothing I could do but try to modify the code.</p><p>According to the error message I first found the relevant c file, searched for the openURL keyword and commented out the relevant code.</p><p><a data-fancybox="gallery" data-src="switch-xcode-theos/image-20240315141626698.webp" data-caption="comment openURL code"><picture>               <source srcset="switch-xcode-theos/image-20240315141626698.webp" type="image/webp">               <img src="switch-xcode-theos/image-20240315141626698.png" alt="comment openURL code"></picture></a></p><p>Continue to look for, you can find that this is not affect the main function of the code, should be to perform a donation and source code to open the URL of the operation, because I am not familiar with Objective-C language, the simplest way is to directly comment out, but fortunately does not affect the main function of the plug-in. The two URLs I pasted below:</p><ul><li>Donate (Donate): <a href="https://paypal.me/giorgioiavicoli">https://paypal.me/giorgioiavicoli</a></li><li>Source Code: <a href="https://github.com/giorgioiavicoli/PassBy">https://github.com/giorgioiavicoli/PassBy</a></li></ul><p><a data-fancybox="gallery" data-src="switch-xcode-theos/image-20240315141700986.webp" data-caption="comment openURL code"><picture>               <source srcset="switch-xcode-theos/image-20240315141700986.webp" type="image/webp">               <img src="switch-xcode-theos/image-20240315141700986.png" alt="comment openURL code"></picture></a></p><h3 id="Secondly"><a href="#Secondly" class="headerlink" title="Secondly"></a>Secondly</h3><p>Trying to continue compiling, unsurprisingly, a new problem arises.</p><p>This time, the problem is even more difficult, as theos is directly prompted by the Xcode compiler that it cannot find the Message framework.</p><p><a data-fancybox="gallery" data-src="switch-xcode-theos/image-20240315141745773.webp" data-caption="Message framework not found"><picture>               <source srcset="switch-xcode-theos/image-20240315141745773.webp" type="image/webp">               <img src="switch-xcode-theos/image-20240315141745773.png" alt="Message framework not found"></picture></a></p><p>This problem would not be something I could fix with a simple modification. My guess is that the newer versions of Xcode have discarded the framework, which leaves me with two options: either refactor the code (which would be too difficult for me to do), or switch to an older version of Xcode (which is a bit of an unknown quantity until I get my hands on it, and I can’t guarantee that I’ll be able to fix it).</p><p>I can only try to change the Xcode version.</p><h2 id="Change-the-Xcode-version"><a href="#Change-the-Xcode-version" class="headerlink" title="Change the Xcode version"></a>Change the Xcode version</h2><p>First check the current version, you can see that it is version 14.2.</p><p><a data-fancybox="gallery" data-src="switch-xcode-theos/image-20240315141951902.webp" data-caption="View version"><picture>               <source srcset="switch-xcode-theos/image-20240315141951902.webp" type="image/webp">               <img src="switch-xcode-theos/image-20240315141951902.png" alt="View version"></picture></a></p><p>On the <a href="https://developer.apple.com/support/xcode/">Xcode support page</a> you can clearly see the minimum system requirements for each Xcode version as well as the included SDKs and other information.</p><p><a data-fancybox="gallery" data-src="switch-xcode-theos/image-20240315142009732.webp" data-caption="Xcode version differences"><picture>               <source srcset="switch-xcode-theos/image-20240315142009732.webp" type="image/webp">               <img src="switch-xcode-theos/image-20240315142009732.png" alt="Xcode version differences"></picture></a></p><p>Next go to Apple’s official download page about <a href="https://developer.apple.com/download/all/?q=xcode">all versions of Xcode</a> and just download an older version. I downloaded version 12.5.1.</p><p><a data-fancybox="gallery" data-src="switch-xcode-theos/image-20240315142032937.webp" data-caption="Download version 12.5.1 of Xcode"><picture>               <source srcset="switch-xcode-theos/image-20240315142032937.webp" type="image/webp">               <img src="switch-xcode-theos/image-20240315142032937.png" alt="Download version 12.5.1 of Xcode"></picture></a></p><p>The next step is to extract the .xip file, change the name of the extracted Xcode.app to a name like Xcode_12.5.app, and finally move it to the /Application directory.</p><p><a data-fancybox="gallery" data-src="switch-xcode-theos/image-20240315142049748.webp" data-caption="Unzip and rename"><picture>               <source srcset="switch-xcode-theos/image-20240315142049748.webp" type="image/webp">               <img src="switch-xcode-theos/image-20240315142049748.png" alt="Unzip and rename"></picture></a></p><p>As you can see in the image above, my old version of Xcode doesn’t open directly, but it doesn’t matter for the purposes of this chapter, we don’t need to open the old version of Xcode directly to operate it. Please read on to find out why.</p><blockquote><p>It takes a while to unpack, so be patient.</p><p>Alternatively, you can download and update Xcode in the usual way. With a multi-threaded download tool, you can basically run at full broadband speed and avoid App Store download failures. The disadvantage is that decompression is more time-consuming.</p></blockquote><h2 id="Switch-Development"><a href="#Switch-Development" class="headerlink" title="Switch Development"></a>Switch Development</h2><p>Note that the subtitle of this section is not “Switching Xcode Versions”, because for us, all we need is the scripting tools that come with older versions of Xcode in the development directory, such as gcc and so on.</p><p><a data-fancybox="gallery" data-src="switch-xcode-theos/image-20240315142237680.webp" data-caption="developer tools directory"><picture>               <source srcset="switch-xcode-theos/image-20240315142237680.webp" type="image/webp">               <img src="switch-xcode-theos/image-20240315142237680.png" alt="developer tools directory"></picture></a></p><p>Next just use this command to switch the xcode-select directory:</p><div class="highlight-wrap" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo xcode-select -s /Applications/&#123;modify here to a specific filename&#125;/Contents/Developer/</span><br></pre></td></tr></table></figure></div><p>Just change it to your old version of the file name, and enter the password without showing it.</p><p><a data-fancybox="gallery" data-src="switch-xcode-theos/image-20240315142300052.webp" data-caption="switch path"><picture>               <source srcset="switch-xcode-theos/image-20240315142300052.webp" type="image/webp">               <img src="switch-xcode-theos/image-20240315142300052.png" alt="switch path"></picture></a></p><p>At this point, enter the command again to verify:</p><div class="highlight-wrap" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">xcodebuild -version</span><br><span class="line">xcode-select -p</span><br><span class="line">gcc -v</span><br><span class="line">g++ -v</span><br></pre></td></tr></table></figure></div><p><a data-fancybox="gallery" data-src="switch-xcode-theos/image-20240315142336388.webp" data-caption="old version of gcc"><picture>               <source srcset="switch-xcode-theos/image-20240315142336388.webp" type="image/webp">               <img src="switch-xcode-theos/image-20240315142336388.png" alt="old version of gcc"></picture></a></p><p>The output of all the above commands can be seen in the words of the name of the old version of Xcode file you chose, something like <strong>Xcode_12.5</strong>.</p><h2 id="Thirdly"><a href="#Thirdly" class="headerlink" title="Thirdly"></a>Thirdly</h2><p>Trying to compile again, the problem is finally solved.</p><div class="highlight-wrap" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">yuesir at iMac <span class="keyword">in</span> /Volumes/Data/Xcode/PassBy</span><br><span class="line">$ make package</span><br><span class="line">&gt; Making all <span class="keyword">for</span> tweak PassBy…</span><br><span class="line">make[2]: Nothing to be <span class="keyword">done</span> <span class="keyword">for</span> <span class="string">&#x27;internal-library-compile&#x27;</span>.</span><br><span class="line">&gt; Making all <span class="keyword">in</span> passbyprefs…</span><br><span class="line">&gt; Making all <span class="keyword">for</span> bundle PassByPrefs…</span><br><span class="line">==&gt; Copying resource directories into the bundle wrapper…</span><br><span class="line">==&gt; Compiling PassByRootListController.m (arm64)…</span><br><span class="line">==&gt; Compiling PassByRootListController.m (arm64e)…</span><br><span class="line">==&gt; Linking bundle PassByPrefs (arm64)…</span><br><span class="line">==&gt; Generating debug symbols <span class="keyword">for</span> PassByPrefs…</span><br><span class="line">==&gt; Stripping PassByPrefs (arm64)…</span><br><span class="line">==&gt; Linking bundle PassByPrefs (arm64e)…</span><br><span class="line">==&gt; Generating debug symbols <span class="keyword">for</span> PassByPrefs…</span><br><span class="line">==&gt; Stripping PassByPrefs (arm64e)…</span><br><span class="line">==&gt; Merging bundle PassByPrefs…</span><br><span class="line">==&gt; Signing PassByPrefs…</span><br><span class="line">&gt; Making all <span class="keyword">in</span> passbyflipswitch…</span><br><span class="line">&gt; Making all <span class="keyword">for</span> bundle PassByFlipswitch…</span><br><span class="line">==&gt; Copying resource directories into the bundle wrapper…</span><br><span class="line">make[3]: Nothing to be <span class="keyword">done</span> <span class="keyword">for</span> <span class="string">&#x27;internal-bundle-compile&#x27;</span>.</span><br><span class="line">&gt; Making stage <span class="keyword">for</span> tweak PassBy…</span><br><span class="line">&gt; Making stage <span class="keyword">in</span> passbyprefs…</span><br><span class="line">&gt; Making stage <span class="keyword">for</span> bundle PassByPrefs…</span><br><span class="line">&gt; Making stage <span class="keyword">in</span> passbyflipswitch…</span><br><span class="line">&gt; Making stage <span class="keyword">for</span> bundle PassByFlipswitch…</span><br><span class="line">dm.pl: building package `com.giorgioiavicoli.passby:iphoneos-arm<span class="string">&#x27; in `./packages/com.giorgioiavicoli.passby_1.9.5_iphoneos-arm.deb&#x27;</span></span><br></pre></td></tr></table></figure></div><blockquote><p>In fact, I tried to restore the above commented out code to normal, but I didn’t realize that it still reported the same error!</p><p>I suspected that it might be a problem with the version of Command Line Tools installed. I didn’t try it because I didn’t know what would happen if I installed a lower version of Tools.</p></blockquote><h2 id="Switch-Back"><a href="#Switch-Back" class="headerlink" title="Switch Back"></a>Switch Back</h2><div class="highlight-wrap" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo xcode-select -s /Applications/Xcode.app/Contents/Developer/</span><br></pre></td></tr></table></figure></div><p>Simply verify it:</p><p><a data-fancybox="gallery" data-src="switch-xcode-theos/image-20240315142734101.webp" data-caption="Switch back to original version"><picture>               <source srcset="switch-xcode-theos/image-20240315142734101.webp" type="image/webp">               <img src="switch-xcode-theos/image-20240315142734101.png" alt="Switch back to original version"></picture></a></p><h2 id="Script"><a href="#Script" class="headerlink" title="Script"></a>Script</h2><p>Here’s another script shared by others, but I didn’t try it myself, so I’m posting the link here as a thank you.</p><p>Link to the article: <a href="https://www.cnblogs.com/zndxall/p/12463744.html">https://www.cnblogs.com/zndxall/p/12463744.html</a></p><h2 id="Thanks"><a href="#Thanks" class="headerlink" title="Thanks"></a>Thanks</h2><p><a href="https://developer.apple.com/download/all/?q=xcode%2012.5.1">Apple Xcode</a></p><p><a href="https://www.cnblogs.com/zndxall/p/12463744.html">Xcode installs multiple versions and switches versions automatically</a></p>]]></content>
+    
+    
+    <summary type="html">After recently replacing my device with a new one, I was about to recompile an iOS jailbreak plugin called PassBy, and found that it frequently reported errors. After a bit of troubleshooting and searching, I determined that switching Xcode to an older version was the easiest solution, so I documented it.</summary>
+    
+    
+    
+    <category term="ios" scheme="https://vccv.cc/en/categories/ios/"/>
+    
+    <category term="technique" scheme="https://vccv.cc/en/categories/ios/technique/"/>
+    
+    
+    <category term="macos" scheme="https://vccv.cc/en/tags/macos/"/>
+    
+    <category term="ios" scheme="https://vccv.cc/en/tags/ios/"/>
+    
+    <category term="xcode" scheme="https://vccv.cc/en/tags/xcode/"/>
+    
+    <category term="theos" scheme="https://vccv.cc/en/tags/theos/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Brew installing R-Kernel Notebook</title>
+    <link href="https://vccv.cc/en/article/brew-r-jupyter.html"/>
+    <id>https://vccv.cc/en/article/brew-r-jupyter.html</id>
+    <published>2023-01-16T03:40:36.000Z</published>
+    <updated>2024-03-15T04:00:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Preface"><a href="#Preface" class="headerlink" title="Preface"></a>Preface</h2><p>My other post describes using <a href="https://vccv.cc/en/article/conda-r-jupyter.html">Conda installing R kernel Notebook</a> on a Linux remote server, but I’ve found that conda doesn’t handle various dependency conflicts very well, often resulting in installations that don’t I found that conda doesn’t handle dependency conflicts well, which often leads to unsuccessful installations.</p><p>Later, I also used brew to install it on my macOS system, and found that it was easier and faster, so I summarized the steps.</p><blockquote><p>System: macOS Venture 13.1 (22C65)</p><p>Product: Intel Chip MacBook</p></blockquote><h2 id="Requirement"><a href="#Requirement" class="headerlink" title="Requirement"></a>Requirement</h2><p>Install <a href="https://brew.sh/">Homebrew</a>.</p><p>Homebrew is the most used package manager on macOS, and this is its <a href="https://docs.brew.sh/Installation">official installation tutorial</a>. But usually, we just need to enter the following command while making sure the network is accessible:</p><div class="highlight-wrap" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/bin/bash -c <span class="string">&quot;<span class="subst">$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)</span>&quot;</span></span><br></pre></td></tr></table></figure></div><h2 id="R"><a href="#R" class="headerlink" title="R"></a>R</h2><p>It is so easy to install r package with brew:</p><div class="highlight-wrap" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install r</span><br></pre></td></tr></table></figure></div><h2 id="Jupyter"><a href="#Jupyter" class="headerlink" title="Jupyter"></a>Jupyter</h2><p>Almost the same as before:</p><div class="highlight-wrap" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install jupyterlab</span><br></pre></td></tr></table></figure></div><h2 id="R-Kernel"><a href="#R-Kernel" class="headerlink" title="R-Kernel"></a>R-Kernel</h2><p>Use r to install <a href="https://github.com/IRkernel/IRkernel">IRkernel</a>:</p><div class="highlight-wrap" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Go to the r console first</span></span><br><span class="line">R</span><br><span class="line"><span class="comment"># Install devtools</span></span><br><span class="line">install.packages(<span class="string">&#x27;IRkernel&#x27;</span>)</span><br><span class="line"><span class="comment"># At this point you might be asked to choose a mirror, just choose the nearest one</span></span><br><span class="line"><span class="comment"># Register the kernel with R</span></span><br><span class="line">IRkernel::installspec()</span><br><span class="line"><span class="comment"># Install the RStudio shortcut.</span></span><br><span class="line"><span class="comment"># If RStudio is installed, you can choose to install it, but not if you&#x27;re using a notebook.</span></span><br><span class="line">jupyter labextension install @techrah/text-shortcuts</span><br></pre></td></tr></table></figure></div><h2 id="Launch-Notebook"><a href="#Launch-Notebook" class="headerlink" title="Launch Notebook"></a>Launch Notebook</h2><div class="highlight-wrap" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jupyter notebook</span><br></pre></td></tr></table></figure></div><p>Click Create or New button and find that you can create r-kernel notebooks now.</p><h2 id="Landscaping"><a href="#Landscaping" class="headerlink" title="Landscaping"></a>Landscaping</h2><p>This part is not necessary and is for record only.</p><div class="highlight-wrap" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Configure themes</span></span><br><span class="line">pip install jupyterthemes</span><br><span class="line"><span class="comment"># A set of theme settings that I personally like and have gotten used to</span></span><br><span class="line">jt -t monokai -f fira -fs 13 -cellw 90% -ofs 11 -dfs 11 -T -N</span><br><span class="line"><span class="comment"># Restore the default theme</span></span><br><span class="line">jt -r</span><br><span class="line"><span class="comment"># Configure plugins</span></span><br><span class="line">pip install jupyter_contrib_nbextensions</span><br><span class="line">jupyter contrib nbextension install --user</span><br><span class="line"><span class="comment"># Install the plugin manager This step may fail See update 1 later for details</span></span><br><span class="line">pip install jupyter_nbextensions_configurator</span><br><span class="line"><span class="comment"># Suggested configuration items</span></span><br><span class="line"><span class="comment"># Hinterland code completion</span></span><br><span class="line"><span class="comment"># Collapsible headings</span></span><br><span class="line"><span class="comment"># Notify Notify mechanism to run time-consuming tasks and notify when they&#x27;re done.</span></span><br><span class="line"><span class="comment"># zenmode Hide active status bar, easy to notice the code.</span></span><br><span class="line"><span class="comment"># ExecuteTime Show execution time</span></span><br></pre></td></tr></table></figure></div><h2 id="Postscript"><a href="#Postscript" class="headerlink" title="Postscript"></a>Postscript</h2><p>I didn’t run into any snags with this installation, so if you run into any other issues, feel free to leave them in the comments section.</p><h2 id="Update-1"><a href="#Update-1" class="headerlink" title="Update 1"></a>Update 1</h2><p>When I repeated this tutorial on 2023.03.20, I found that the <strong>Nbextensions</strong> tag would not appear. Upon checking, this was caused by the plugin not being updated to adapt a new version of the dependency package nbclassic.</p><p>See the GitHub <a href="https://github.com/Jupyter-contrib/jupyter_nbextensions_configurator/issues/151">issue</a> for details.</p><p>Solution: Downgrade the dependency package. We may update it later.</p><div class="highlight-wrap" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install <span class="string">&quot;nbclassic&lt;0.5&quot;</span></span><br></pre></td></tr></table></figure></div><h2 id="Update-2"><a href="#Update-2" class="headerlink" title="Update 2"></a>Update 2</h2><p>2024.03.15 Update: The notebook was officially upgraded to version 7.x a couple months back. I haven’t had to do any 3rd party manipulation with the new version. It can be changed directly inside the settings with a high degree of customization.</p><p><a data-fancybox="gallery" data-src="brew-r-jupyter/image-20240315140244649.webp" data-caption="notebook-setting"><picture>               <source srcset="brew-r-jupyter/image-20240315140244649.webp" type="image/webp">               <img src="brew-r-jupyter/image-20240315140244649.png" alt="notebook-setting"></picture></a></p>]]></content>
+    
+    
+    <summary type="html">I introduced in another article in the Linux remote server using conda configuration r-kernel jupyter notebook, but I found that conda for a variety of dependency conflicts are not handled well, often leading to unsuccessful installation. In macOS system locally using brew for installation is much easier and faster. Here I summarized steps for reference.</summary>
+    
+    
+    
+    <category term="macos" scheme="https://vccv.cc/en/categories/macos/"/>
+    
+    <category term="technique" scheme="https://vccv.cc/en/categories/macos/technique/"/>
+    
+    
+    <category term="r" scheme="https://vccv.cc/en/tags/r/"/>
+    
+    <category term="jupyter" scheme="https://vccv.cc/en/tags/jupyter/"/>
+    
+    <category term="brew" scheme="https://vccv.cc/en/tags/brew/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Unix terminal installation configuration Oh My Zsh</title>
     <link href="https://vccv.cc/en/article/omz-terminal.html"/>
     <id>https://vccv.cc/en/article/omz-terminal.html</id>
@@ -37,9 +149,9 @@
     
     
     
-    <category term="skill" scheme="https://vccv.cc/en/categories/skill/"/>
+    <category term="unix" scheme="https://vccv.cc/en/categories/unix/"/>
     
-    <category term="unix" scheme="https://vccv.cc/en/categories/skill/unix/"/>
+    <category term="technique" scheme="https://vccv.cc/en/categories/unix/technique/"/>
     
     
     <category term="terminal" scheme="https://vccv.cc/en/tags/terminal/"/>
@@ -62,9 +174,9 @@
     
     
     
-    <category term="skill" scheme="https://vccv.cc/en/categories/skill/"/>
+    <category term="macos" scheme="https://vccv.cc/en/categories/macos/"/>
     
-    <category term="macos" scheme="https://vccv.cc/en/categories/skill/macos/"/>
+    <category term="technique" scheme="https://vccv.cc/en/categories/macos/technique/"/>
     
     
     <category term="macos" scheme="https://vccv.cc/en/tags/macos/"/>
@@ -89,9 +201,9 @@
     
     
     
-    <category term="skill" scheme="https://vccv.cc/en/categories/skill/"/>
+    <category term="linux" scheme="https://vccv.cc/en/categories/linux/"/>
     
-    <category term="droplet" scheme="https://vccv.cc/en/categories/skill/droplet/"/>
+    <category term="technique" scheme="https://vccv.cc/en/categories/linux/technique/"/>
     
     
     <category term="conda" scheme="https://vccv.cc/en/tags/conda/"/>
@@ -118,7 +230,9 @@
     
     
     
-    <category term="skill" scheme="https://vccv.cc/en/categories/skill/"/>
+    <category term="macos" scheme="https://vccv.cc/en/categories/macos/"/>
+    
+    <category term="technique" scheme="https://vccv.cc/en/categories/macos/technique/"/>
     
     
     <category term="docker" scheme="https://vccv.cc/en/tags/docker/"/>
@@ -143,9 +257,9 @@
     
     
     
-    <category term="skill" scheme="https://vccv.cc/en/categories/skill/"/>
+    <category term="macos" scheme="https://vccv.cc/en/categories/macos/"/>
     
-    <category term="macos" scheme="https://vccv.cc/en/categories/skill/macos/"/>
+    <category term="technique" scheme="https://vccv.cc/en/categories/macos/technique/"/>
     
     
     <category term="macos" scheme="https://vccv.cc/en/tags/macos/"/>
@@ -161,7 +275,7 @@
     <published>2022-03-26T06:06:28.000Z</published>
     <updated>2022-03-26T06:06:28.000Z</updated>
     
-    <content type="html"><![CDATA[<script src="https://cdn.jsdelivr.net/npm/dplayer@1/dist/DPlayer.min.js"></script><div id="mmedia-nRzBIgeZoVgdgNQO"></div><script> var nRzBIgeZoVgdgNQO_options = JSON.parse('{\"video\":{\"url\":\"takagi-san/videos/takagi-san.mp4\"}}'); nRzBIgeZoVgdgNQO_options.container = document.getElementById("mmedia-nRzBIgeZoVgdgNQO"); const dp_nRzBIgeZoVgdgNQO = new DPlayer(nRzBIgeZoVgdgNQO_options); </script><h2 id="Before"><a href="#Before" class="headerlink" title="Before"></a>Before</h2><p>The third season of <strong>Takagi-san</strong> (Japanese: からかい上手の高木さん) anime TV ended today (3.26), and there may not be a fourth season.</p><p>Purposely went to catch up at 1 a.m. and felt a lot of emotions.</p><p>Before learning that the theatrical version will be released in Japan in June, bilibili may be introduced, looking forward to it.</p><p>Also, reprinting a video of the upkeeper’s clip recapping three seasons of the show, great job.</p><p>Thanks to <a href="https://www.bilibili.com/video/BV1eS4y127Eg">吕吕吕谷修</a> .</p>]]></content>
+    <content type="html"><![CDATA[<script src="https://cdn.jsdelivr.net/npm/dplayer@1/dist/DPlayer.min.js"></script><div id="mmedia-bXzfQcIGHxFTRwjE"></div><script> var bXzfQcIGHxFTRwjE_options = JSON.parse('{\"video\":{\"url\":\"takagi-san/videos/takagi-san.mp4\"}}'); bXzfQcIGHxFTRwjE_options.container = document.getElementById("mmedia-bXzfQcIGHxFTRwjE"); const dp_bXzfQcIGHxFTRwjE = new DPlayer(bXzfQcIGHxFTRwjE_options); </script><h2 id="Before"><a href="#Before" class="headerlink" title="Before"></a>Before</h2><p>The third season of <strong>Takagi-san</strong> (Japanese: からかい上手の高木さん) anime TV ended today (3.26), and there may not be a fourth season.</p><p>Purposely went to catch up at 1 a.m. and felt a lot of emotions.</p><p>Before learning that the theatrical version will be released in Japan in June, bilibili may be introduced, looking forward to it.</p><p>Also, reprinting a video of the upkeeper’s clip recapping three seasons of the show, great job.</p><p>Thanks to <a href="https://www.bilibili.com/video/BV1eS4y127Eg">吕吕吕谷修</a> .</p>]]></content>
     
     
     <summary type="html">Takagi-san&#39;s TV version is now finished, and there may not be a fourth season. Before learning that the theatrical version will be released in Japan in June, bilibili may be introduced, looking forward to it.</summary>
@@ -169,6 +283,8 @@
     
     
     <category term="thinking" scheme="https://vccv.cc/en/categories/thinking/"/>
+    
+    <category term="anime" scheme="https://vccv.cc/en/categories/thinking/anime/"/>
     
     
     <category term="takagi-san" scheme="https://vccv.cc/en/tags/takagi-san/"/>
@@ -189,9 +305,9 @@
     
     
     
-    <category term="skill" scheme="https://vccv.cc/en/categories/skill/"/>
+    <category term="macos" scheme="https://vccv.cc/en/categories/macos/"/>
     
-    <category term="macos" scheme="https://vccv.cc/en/categories/skill/macos/"/>
+    <category term="technique" scheme="https://vccv.cc/en/categories/macos/technique/"/>
     
     
     <category term="macos" scheme="https://vccv.cc/en/tags/macos/"/>
@@ -214,9 +330,9 @@
     
     
     
-    <category term="skill" scheme="https://vccv.cc/en/categories/skill/"/>
+    <category term="linux" scheme="https://vccv.cc/en/categories/linux/"/>
     
-    <category term="linux" scheme="https://vccv.cc/en/categories/skill/linux/"/>
+    <category term="technique" scheme="https://vccv.cc/en/categories/linux/technique/"/>
     
     
     <category term="qinglong" scheme="https://vccv.cc/en/tags/qinglong/"/>
@@ -239,9 +355,9 @@
     
     
     
-    <category term="backup" scheme="https://vccv.cc/en/categories/backup/"/>
+    <category term="ios" scheme="https://vccv.cc/en/categories/ios/"/>
     
-    <category term="ios" scheme="https://vccv.cc/en/categories/backup/ios/"/>
+    <category term="backup" scheme="https://vccv.cc/en/categories/ios/backup/"/>
     
     
     <category term="jailbreak" scheme="https://vccv.cc/en/tags/jailbreak/"/>
@@ -264,7 +380,9 @@
     
     
     
-    <category term="beautify" scheme="https://vccv.cc/en/categories/beautify/"/>
+    <category term="hexo" scheme="https://vccv.cc/en/categories/hexo/"/>
+    
+    <category term="beautify" scheme="https://vccv.cc/en/categories/hexo/beautify/"/>
     
     
     <category term="beautify" scheme="https://vccv.cc/en/tags/beautify/"/>
@@ -289,9 +407,9 @@
     
     
     
-    <category term="skill" scheme="https://vccv.cc/en/categories/skill/"/>
+    <category term="macos" scheme="https://vccv.cc/en/categories/macos/"/>
     
-    <category term="macos" scheme="https://vccv.cc/en/categories/skill/macos/"/>
+    <category term="technique" scheme="https://vccv.cc/en/categories/macos/technique/"/>
     
     
     <category term="macos" scheme="https://vccv.cc/en/tags/macos/"/>
@@ -316,9 +434,9 @@
     
     
     
-    <category term="modify crack" scheme="https://vccv.cc/en/categories/modify-crack/"/>
+    <category term="ios" scheme="https://vccv.cc/en/categories/ios/"/>
     
-    <category term="ios" scheme="https://vccv.cc/en/categories/modify-crack/ios/"/>
+    <category term="crack" scheme="https://vccv.cc/en/categories/ios/crack/"/>
     
     
     <category term="jailbreak" scheme="https://vccv.cc/en/tags/jailbreak/"/>
@@ -343,7 +461,9 @@
     
     
     
-    <category term="beautify" scheme="https://vccv.cc/en/categories/beautify/"/>
+    <category term="hexo" scheme="https://vccv.cc/en/categories/hexo/"/>
+    
+    <category term="beautify" scheme="https://vccv.cc/en/categories/hexo/beautify/"/>
     
     
     <category term="codeblock" scheme="https://vccv.cc/en/tags/codeblock/"/>
@@ -368,9 +488,9 @@
     
     
     
-    <category term="modified crack" scheme="https://vccv.cc/en/categories/modified-crack/"/>
+    <category term="ios" scheme="https://vccv.cc/en/categories/ios/"/>
     
-    <category term="ios" scheme="https://vccv.cc/en/categories/modified-crack/ios/"/>
+    <category term="crack" scheme="https://vccv.cc/en/categories/ios/crack/"/>
     
     
     <category term="genshin impact" scheme="https://vccv.cc/en/tags/genshin-impact/"/>
@@ -395,7 +515,9 @@
     
     
     
-    <category term="notes" scheme="https://vccv.cc/en/categories/notes/"/>
+    <category term="thinking" scheme="https://vccv.cc/en/categories/thinking/"/>
+    
+    <category term="note" scheme="https://vccv.cc/en/categories/thinking/note/"/>
     
     
     <category term="python" scheme="https://vccv.cc/en/tags/python/"/>
