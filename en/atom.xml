@@ -127,11 +127,11 @@
     <category term="technique" scheme="https://vccv.cc/en/categories/macos/technique/"/>
     
     
+    <category term="brew" scheme="https://vccv.cc/en/tags/brew/"/>
+    
     <category term="r" scheme="https://vccv.cc/en/tags/r/"/>
     
     <category term="jupyter" scheme="https://vccv.cc/en/tags/jupyter/"/>
-    
-    <category term="brew" scheme="https://vccv.cc/en/tags/brew/"/>
     
   </entry>
   
@@ -206,11 +206,11 @@
     <category term="technique" scheme="https://vccv.cc/en/categories/linux/technique/"/>
     
     
-    <category term="conda" scheme="https://vccv.cc/en/tags/conda/"/>
-    
     <category term="r" scheme="https://vccv.cc/en/tags/r/"/>
     
     <category term="jupyter" scheme="https://vccv.cc/en/tags/jupyter/"/>
+    
+    <category term="conda" scheme="https://vccv.cc/en/tags/conda/"/>
     
     <category term="droplet" scheme="https://vccv.cc/en/tags/droplet/"/>
     
@@ -275,7 +275,7 @@
     <published>2022-03-26T06:06:28.000Z</published>
     <updated>2022-03-26T06:06:28.000Z</updated>
     
-    <content type="html"><![CDATA[<script src="https://cdn.jsdelivr.net/npm/dplayer@1/dist/DPlayer.min.js"></script><div id="mmedia-bXzfQcIGHxFTRwjE"></div><script> var bXzfQcIGHxFTRwjE_options = JSON.parse('{\"video\":{\"url\":\"takagi-san/videos/takagi-san.mp4\"}}'); bXzfQcIGHxFTRwjE_options.container = document.getElementById("mmedia-bXzfQcIGHxFTRwjE"); const dp_bXzfQcIGHxFTRwjE = new DPlayer(bXzfQcIGHxFTRwjE_options); </script><h2 id="Before"><a href="#Before" class="headerlink" title="Before"></a>Before</h2><p>The third season of <strong>Takagi-san</strong> (Japanese: からかい上手の高木さん) anime TV ended today (3.26), and there may not be a fourth season.</p><p>Purposely went to catch up at 1 a.m. and felt a lot of emotions.</p><p>Before learning that the theatrical version will be released in Japan in June, bilibili may be introduced, looking forward to it.</p><p>Also, reprinting a video of the upkeeper’s clip recapping three seasons of the show, great job.</p><p>Thanks to <a href="https://www.bilibili.com/video/BV1eS4y127Eg">吕吕吕谷修</a> .</p>]]></content>
+    <content type="html"><![CDATA[<script src="https://cdn.jsdelivr.net/npm/dplayer@1/dist/DPlayer.min.js"></script><div id="mmedia-LDTkVzOdFHVKpHtw"></div><script> var LDTkVzOdFHVKpHtw_options = JSON.parse('{\"video\":{\"url\":\"takagi-san/videos/takagi-san.mp4\"}}'); LDTkVzOdFHVKpHtw_options.container = document.getElementById("mmedia-LDTkVzOdFHVKpHtw"); const dp_LDTkVzOdFHVKpHtw = new DPlayer(LDTkVzOdFHVKpHtw_options); </script><h2 id="Before"><a href="#Before" class="headerlink" title="Before"></a>Before</h2><p>The third season of <strong>Takagi-san</strong> (Japanese: からかい上手の高木さん) anime TV ended today (3.26), and there may not be a fourth season.</p><p>Purposely went to catch up at 1 a.m. and felt a lot of emotions.</p><p>Before learning that the theatrical version will be released in Japan in June, bilibili may be introduced, looking forward to it.</p><p>Also, reprinting a video of the upkeeper’s clip recapping three seasons of the show, great job.</p><p>Thanks to <a href="https://www.bilibili.com/video/BV1eS4y127Eg">吕吕吕谷修</a> .</p>]]></content>
     
     
     <summary type="html">Takagi-san&#39;s TV version is now finished, and there may not be a fourth season. Before learning that the theatrical version will be released in Japan in June, bilibili may be introduced, looking forward to it.</summary>
