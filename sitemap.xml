@@ -20,16 +20,7 @@
   </url>
   
   <url>
-    <loc>https://vccv.cc/about/</loc>
-    
-    <lastmod>2024-03-15</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://vccv.cc/categories/</loc>
+    <loc>https://vccv.cc/tags/</loc>
     
     <lastmod>2024-03-15</lastmod>
     
@@ -47,7 +38,16 @@
   </url>
   
   <url>
-    <loc>https://vccv.cc/tags/</loc>
+    <loc>https://vccv.cc/categories/</loc>
+    
+    <lastmod>2024-03-15</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://vccv.cc/about/</loc>
     
     <lastmod>2024-03-15</lastmod>
     
