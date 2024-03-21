@@ -2,15 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://vccv.cc/en/tags/</loc>
-    
-    <lastmod>2024-03-21</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://vccv.cc/en/tools/</loc>
     
     <lastmod>2024-03-21</lastmod>
@@ -20,7 +11,7 @@
   </url>
   
   <url>
-    <loc>https://vccv.cc/en/search/</loc>
+    <loc>https://vccv.cc/en/about/</loc>
     
     <lastmod>2024-03-21</lastmod>
     
@@ -38,7 +29,16 @@
   </url>
   
   <url>
-    <loc>https://vccv.cc/en/about/</loc>
+    <loc>https://vccv.cc/en/search/</loc>
+    
+    <lastmod>2024-03-21</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://vccv.cc/en/tags/</loc>
     
     <lastmod>2024-03-21</lastmod>
     
@@ -227,6 +227,20 @@
 
   
   <url>
+    <loc>https://vccv.cc/en/tags/macos/</loc>
+    <lastmod>2024-03-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://vccv.cc/en/tags/aria2/</loc>
+    <lastmod>2024-03-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://vccv.cc/en/tags/brew/</loc>
     <lastmod>2024-03-21</lastmod>
     <changefreq>weekly</changefreq>
@@ -242,20 +256,6 @@
   
   <url>
     <loc>https://vccv.cc/en/tags/jupyter/</loc>
-    <lastmod>2024-03-21</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://vccv.cc/en/tags/macos/</loc>
-    <lastmod>2024-03-21</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://vccv.cc/en/tags/aria2/</loc>
     <lastmod>2024-03-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -388,14 +388,14 @@
   </url>
   
   <url>
-    <loc>https://vccv.cc/en/tags/yabai/</loc>
+    <loc>https://vccv.cc/en/tags/huggingface/</loc>
     <lastmod>2024-03-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://vccv.cc/en/tags/huggingface/</loc>
+    <loc>https://vccv.cc/en/tags/yabai/</loc>
     <lastmod>2024-03-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -410,6 +410,13 @@
   
   <url>
     <loc>https://vccv.cc/en/tags/oh-my-zsh/</loc>
+    <lastmod>2024-03-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://vccv.cc/en/tags/passby/</loc>
     <lastmod>2024-03-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -431,13 +438,6 @@
   
   <url>
     <loc>https://vccv.cc/en/tags/notebook/</loc>
-    <lastmod>2024-03-21</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://vccv.cc/en/tags/passby/</loc>
     <lastmod>2024-03-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -579,13 +579,6 @@
   </url>
   
   <url>
-    <loc>https://vccv.cc/en/categories/thinking/nlp/llm/</loc>
-    <lastmod>2024-03-21</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://vccv.cc/en/categories/ios/technique/</loc>
     <lastmod>2024-03-21</lastmod>
     <changefreq>weekly</changefreq>
@@ -594,6 +587,13 @@
   
   <url>
     <loc>https://vccv.cc/en/categories/thinking/anime/</loc>
+    <lastmod>2024-03-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://vccv.cc/en/categories/thinking/nlp/llm/</loc>
     <lastmod>2024-03-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

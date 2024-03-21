@@ -8,6 +8,7 @@ https://vccv.cc/en/article/docker-easyconnect.html
 https://vccv.cc/en/article/omz-terminal.html
 https://vccv.cc/en/article/conda-r-jupyter.html
 https://vccv.cc/en/article/ios-jailbreak-genshin.html
+https://vccv.cc/article/omz-terminal.html
 https://vccv.cc/article/cuda-conda-nlp.html
 https://vccv.cc/article/brew-r-jupyter.html
 https://vccv.cc/article/aria2-mac.html
@@ -21,7 +22,6 @@ https://vccv.cc/article/switch-xcode-theos.html
 https://vccv.cc/article/passby-fix.html
 https://vccv.cc/article/conda-r-jupyter.html
 https://vccv.cc/article/docker-easyconnect.html
-https://vccv.cc/article/omz-terminal.html
 https://vccv.cc/article/ios-app.html
 https://vccv.cc/article/ksjsb-cookie.html
 https://vccv.cc/article/ios-jailbreak-genshin.html
