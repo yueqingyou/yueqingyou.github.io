@@ -8,10 +8,10 @@ https://vccv.cc/en/article/docker-easyconnect.html
 https://vccv.cc/en/article/omz-terminal.html
 https://vccv.cc/en/article/conda-r-jupyter.html
 https://vccv.cc/en/article/ios-jailbreak-genshin.html
+https://vccv.cc/article/cuda-conda-nlp.html
 https://vccv.cc/article/brew-r-jupyter.html
 https://vccv.cc/article/aria2-mac.html
 https://vccv.cc/article/llm-transformers.html
-https://vccv.cc/article/cuda-conda-nlp.html
 https://vccv.cc/article/docker-macos.html
 https://vccv.cc/article/bilibili-qinglong.html
 https://vccv.cc/article/jailbreak-plugin-backup.html
